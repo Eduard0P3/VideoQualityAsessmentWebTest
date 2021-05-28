@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)https://getbootstrap.com/docs/4.0/examples/checkout/ -->
+<html lang="es">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="https://getbootstrap.com/docs/4.0/assets/img/favicons/favicon.ico">
+  <link href="./Css/video-js.css" rel="stylesheet" />
+  <script src="./Js/video.min.js"></script>
+  <title>Formulario de evaluacion de calidad de video</title>
+  <!-- <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/checkout/"> -->
+  <!-- Bootstrap core CSS -->
+  <link href="./Css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="./Css/form-validation.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+        integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script> -->
+</head>
+
+<body style="background-color:#808080;">
+  <div class="container">
+    <div class="py-5 text-justify text-center">
+      <h2>Formulario de evaluacion de calidad de video</h2>
+      <p class="lead">A continuacion se dispondran una serie de secuencias de video para su calificacion,
+        las secuencias vienen en pares, donde la primera secuencia presentada corresponde a una secuencia
+        original y la secuencia siguiente corresponde a una degradacion de la secuencia original. Al final
+        de cada presentación por pares debe usted evaluar la degradación de la segunda secuencia con respecto
+        a la primera.
+        <br><br>Exprese su apreciación utilizando la siguiente escala:
+        <table class="table table-striped table-bordered">
+          <tr><th>1. Múy distorsionada.</th></tr>
+          <tr><th>2. Distorsionada.</th></tr>
+          <tr><th>3. Ligeramente distorsionada.</th></tr>
+          <tr><th>4. Perceptible, con mínima distorsión.</th></tr>
+          <tr><th>5. Sin distorsión.</th></tr>
+        </table>
+      </p>
+    </div>
+    <div class="row">
+      <div class="col-md-12 order-md-1">
+        <input type="number" id="evaluador" name="evaluador" class="form-control" 
+        placeholder="Escriba el # identificador del evaluador">
+        <br><br>
+      </div>
+      <div class="col-md-12 order-md-1">
+        <form class="needs-validation" novalidate="" id="formulario"></form>
+        <script>
+          function Sentencia(a,b) {
+            var j = 1;
+            var CodigoHTML="";
+            for (a; a < (b+1); a++) {
+              CodigoHTML += "<h4 class='mb-3'>Secuencia "+a+"</h4><video id='video"+a+"' class='video-js vjs-big-play-centered' controls preload='auto' width='768' height='432'    data-setup='{}' poster='./Other_files/764x432.jpg'>    <source src='./Other_files/Data/pa1_25fps.mp4' type='video/mp4' />    <p class='vjs-no-js'>        To view this video please enable JavaScript, and consider upgrading to a        web browser that        <a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>    </p></video><div class='d-block my-3'>    <div class='custom-control custom-radio'>        <input id='v"+a+"_"+j+"' name='sequence"+a+"' type='radio' class='custom-control-input' required='' value='1'>        <label class='custom-control-label' for='v"+a+"_"+j+"'>1. Múy distorsionada.</label>    </div>    <div class='custom-control custom-radio'>        <input id='v"+a+"_"+(j+1)+"' name='sequence"+a+"' type='radio' class='custom-control-input' required='' value ='2'>        <label class='custom-control-label' for='v"+a+"_"+(j+1)+"'>2. Distorsionada.</label>    </div>    <div class='custom-control custom-radio'>        <input id='v"+a+"_"+(j+2)+"' name='sequence"+a+"' type='radio' class='custom-control-input' required='' value ='3'>        <label class='custom-control-label' for='v"+a+"_"+(j+2)+"'>3. Ligeramente distorsionada.</label>    </div>    <div class='custom-control custom-radio'>        <input id='v"+a+"_"+(j+3)+"' name='sequence"+a+"' type='radio' class='custom-control-input' required='' value ='4'>        <label class='custom-control-label' for='v"+a+"_"+(j+3)+"'>4. Perceptible, con mínima distorsión.</label>    </div>    <div class='custom-control custom-radio'>        <input id='v"+a+"_"+(j+4)+"' name='sequence"+a+"' type='radio' class='custom-control-input' required='' value ='5'>        <label class='custom-control-label' for='v"+a+"_"+(j+4)+"'>5. Sin distorsión.</label>    </div></div><hr class='mb-4'>";
+            }
+            document.getElementById("formulario").innerHTML = CodigoHTML;
+          }
+          Sentencia(66,70);
+        </script>
+        <script src="./Js/evaluacion.js"></script>
+        <input class='btn btn-info btn-lg btn-block' name="btnEnviar" type='button' id="btnEnviar" value="Grabar y enviar la evaluacion" placeholder="Grabar y enviar la evaluacion" onclick="todo()"></input>
+        <!-- <input class='btn btn-info btn-lg btn-block' name="btnTest" type='button' id="btnTest" value="Test" placeholder="Test" onclick="displayRadioValue(), getDatos()"></input> -->
+      </div>
+    </div>
+    <div id="result"></div>
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+      <p class="mb-1 text-light">© 2017-2021 VQA-Tesis</p>
+      <ul class="list-inline">
+        <li class="list-inline-item"><a class="text-warning" href="#top">Privacy</a></li>
+        <li class="list-inline-item"><a class="text-warning" href="#top">Terms</a></li>
+        <li class="list-inline-item"><a class="text-warning" href="#top">Support</a></li>
+      </ul>
+    </footer>
+  </div>
+  <!-- Bootstrap core JavaScript
+    ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <!-- <script src="./Js/jquery-3.2.1.slim.min.js.descarga" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="./Js/popper.min.js.descarga"></script>
+    <script src="./Js/"></script>
+    <script src="./Js/holder.min.js.descarga"></script>
+    <script>
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+      (function() {
+        'use strict';
+
+        window.addEventListener('load', function() {
+          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+          var forms = document.getElementsByClassName('needs-validation');
+
+          // Loop over them and prevent submission
+          var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add('was-validated');
+            }, false);
+          });
+        }, false);
+      })();
+    </script> -->
+</body>
+
+</html>
