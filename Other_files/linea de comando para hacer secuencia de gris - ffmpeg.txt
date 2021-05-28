@@ -1,0 +1,10 @@
+
+"D:/Programas/ffmpeg-n4.4-4-gacb339bb88-win64-gpl-4.4/bin/ffmpeg.exe" -r 25 -start_number 1 -i "D:/Backup unidad D/Proyects-Git/VideoQualityAsessmentWeb/Other_files/frame1 - copia (%03d).jpg" -c:v libx264 -vf fps=25 -pix_fmt yuv420p -preset ultrafast -qp 0 "D:/Backup unidad D/Proyects-Git/VideoQualityAsessmentWeb/Other_files/GraySequence.mp4"
+
+(echo file 'first file.mp4' & echo file 'second file.mp4' )>list.txt
+ffmpeg -safe 0 -f concat -i list.txt -c copy output.mp4
+
+(echo file 'D:/Data/pa1_25fps.mp4' & echo file 'D:/Backup unidad D/Proyects-Git/VideoQualityAsessmentWeb/Other_files/GraySequence.mp4' & echo file 'D:/Data/pa2_25fps.mp4' )>list.txt
+"D:/Programas/ffmpeg-n4.4-4-gacb339bb88-win64-gpl-4.4/bin/ffmpeg.exe" -safe 0 -f concat -i list.txt -c copy "D:/Backup unidad D/Proyects-Git/VideoQualityAsessmentWeb/Other_files/Data/Secuencia01.mp4"
+
+"D:/Programas/ffmpeg-n4.4-4-gacb339bb88-win64-gpl-4.4/bin/ffmpeg.exe" -r 50 -start_number 1 -i "D:/Backup unidad D/Proyects-Git/VideoQualityAsessmentWeb/Other_files/frame - copia (%03d).jpg" -c:v libx264 -vf fps=50 -pix_fmt yuv420p -preset ultrafast -qp 0 "D:/Backup unidad D/Proyects-Git/VideoQualityAsessmentWeb/Other_files/GraySequence50.mp4"
