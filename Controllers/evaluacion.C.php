@@ -92,9 +92,9 @@ try {
 
     $mail->send();
 
-    $respuesta['respuesta'] = "Los datos fueron enviados correctamente";
+    $respuesta['respuesta'] = "Los datos fueron enviados correctamente, muchas gracias por su participación.";
 } catch (Exception $e) {
-    $respuesta['respuesta'] = "Error, los datos no se pudieron enviar. Mailer Error: {$mail->ErrorInfo}";
+    $respuesta['respuesta'] = "Error, los datos no se pudieron enviar. Mailer Error: {$mail->ErrorInfo}, por favor comuniquelo a la persona que le envió la evaluación";
 }
 
 echo json_encode($respuesta);
