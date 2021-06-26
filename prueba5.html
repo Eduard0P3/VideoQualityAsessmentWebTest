@@ -20,18 +20,25 @@
         integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <!-- <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script> -->
+  <style>
+    b {
+      color: white;
+      background-color: black;
+    }
+  </style>
 </head>
 
 <body style="background-color:#808080;">
   <div class="container">
     <div class="py-5 text-justify text-center">
       <h2>Formulario de evaluacion de calidad de video</h2>
-      <p class="lead">A continuacion se dispondran una serie de secuencias de video para su calificacion,
-        las secuencias vienen en pares, donde la primera secuencia presentada corresponde a una secuencia
-        original y la secuencia siguiente corresponde a una degradacion de la secuencia original. Al final
-        de cada presentación por pares debe usted evaluar la degradación de la segunda secuencia con respecto
-        a la primera.
-        <br><br>Exprese su apreciación utilizando la siguiente escala:
+      <p class="lead text-justify">A continuación, se le mostrara una serie de secuencias de video para su calificación,
+        cada recuadro de video es una secuencia de video estructurada de la siguiente forma: los primeros <b>10
+          segundos</b> corresponden a un fragmento de video original, luego tenemos una secuencia gris de descanso de
+        <b>2 segundos,</b> seguido tenemos otros <b>10 segundos</b> que corresponden al mismo fragmento de video
+        anterior pero degradado. <b>Por favor, al final de cada presentación de las secuencias evalúe el nivel de
+          degradación de la segunda mitad de la secuencia con respecto a la primera mitad de la
+          secuencia.</b><br><br>Exprese su apreciación de la calidad de video utilizando la siguiente escala:
         <table class="table table-striped table-bordered">
           <tr><th>1. Múy distorsionada.</th></tr>
           <tr><th>2. Distorsionada.</th></tr>
@@ -43,27 +50,28 @@
     </div>
     <div class="row">
       <div class="col-md-12 order-md-1">
-        <input type="number" id="evaluador" name="evaluador" class="form-control" 
-        placeholder="Escriba el # identificador del evaluador">
+        <input type="text" id="evaluador" name="evaluador" class="form-control" 
+        placeholder="Por favor escriba su número de cedula.">
         <br><br>
       </div>
       <div class="col-md-12 order-md-1">
         <form class="needs-validation" novalidate="" id="formulario"></form>
         <script>
-          function Sentencia(a,b) {
+          function Sentencia(a, b) {
             var d = 6;
             var j = 1;
-            var CodigoHTML="";
-            for (a; a < (b+1); a++) {
-              CodigoHTML += "<h4 class='mb-3'>Secuencia "+a+"</h4><video id='video"+a+"' class='video-js vjs-big-play-centered' controls preload='auto' width='768' height='432'    data-setup='{}' poster='./Other_files/764x432.jpg'>    <source src='./Other_files/Data/Secuencia"+d+".mp4' type='video/mp4' />    <p class='vjs-no-js'>        To view this video please enable JavaScript, and consider upgrading to a        web browser that        <a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>    </p></video><div class='d-block my-3'>    <div class='custom-control custom-radio'>        <input id='v"+a+"_"+j+"' name='sequence"+a+"' type='radio' class='custom-control-input' required='' value='1'>        <label class='custom-control-label' for='v"+a+"_"+j+"'>1. Múy distorsionada.</label>    </div>    <div class='custom-control custom-radio'>        <input id='v"+a+"_"+(j+1)+"' name='sequence"+a+"' type='radio' class='custom-control-input' required='' value ='2'>        <label class='custom-control-label' for='v"+a+"_"+(j+1)+"'>2. Distorsionada.</label>    </div>    <div class='custom-control custom-radio'>        <input id='v"+a+"_"+(j+2)+"' name='sequence"+a+"' type='radio' class='custom-control-input' required='' value ='3'>        <label class='custom-control-label' for='v"+a+"_"+(j+2)+"'>3. Ligeramente distorsionada.</label>    </div>    <div class='custom-control custom-radio'>        <input id='v"+a+"_"+(j+3)+"' name='sequence"+a+"' type='radio' class='custom-control-input' required='' value ='4'>        <label class='custom-control-label' for='v"+a+"_"+(j+3)+"'>4. Perceptible, con mínima distorsión.</label>    </div>    <div class='custom-control custom-radio'>        <input id='v"+a+"_"+(j+4)+"' name='sequence"+a+"' type='radio' class='custom-control-input' required='' value ='5'>        <label class='custom-control-label' for='v"+a+"_"+(j+4)+"'>5. Sin distorsión.</label>    </div></div><hr class='mb-4'>";
+            var CodigoHTML = "";
+            for (a; a < (b + 1); a++) {
+              CodigoHTML += "<h4 class='mb-3'>Secuencia " + a + "</h4><video id='video" + a + "' class='video-js vjs-big-play-centered' controls preload='metadata' width='768' height='432'    data-setup='{}' poster='./Other_files/764x432.jpg'>    <source src='./Other_files/Data/Secuencia" + d + ".mp4' type='video/mp4' />    <p class='vjs-no-js'>        To view this video please enable JavaScript, and consider upgrading to a        web browser that        <a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>    </p></video><div class='d-block my-3'>    <div class='custom-control custom-radio'>        <input id='v" + a + "_" + j + "' name='sequence" + a + "' type='radio' class='custom-control-input' required='' value='1'>        <label class='custom-control-label' for='v" + a + "_" + j + "'>1. Múy distorsionada.</label>    </div>    <div class='custom-control custom-radio'>        <input id='v" + a + "_" + (j + 1) + "' name='sequence" + a + "' type='radio' class='custom-control-input' required='' value ='2'>        <label class='custom-control-label' for='v" + a + "_" + (j + 1) + "'>2. Distorsionada.</label>    </div>    <div class='custom-control custom-radio'>        <input id='v" + a + "_" + (j + 2) + "' name='sequence" + a + "' type='radio' class='custom-control-input' required='' value ='3'>        <label class='custom-control-label' for='v" + a + "_" + (j + 2) + "'>3. Ligeramente distorsionada.</label>    </div>    <div class='custom-control custom-radio'>        <input id='v" + a + "_" + (j + 3) + "' name='sequence" + a + "' type='radio' class='custom-control-input' required='' value ='4'>        <label class='custom-control-label' for='v" + a + "_" + (j + 3) + "'>4. Perceptible, con mínima distorsión.</label>    </div>    <div class='custom-control custom-radio'>        <input id='v" + a + "_" + (j + 4) + "' name='sequence" + a + "' type='radio' class='custom-control-input' required='' value ='5'>        <label class='custom-control-label' for='v" + a + "_" + (j + 4) + "'>5. Sin distorsión.</label>    </div></div><hr class='mb-4'>";
               d = d + 6;
             }
             document.getElementById("formulario").innerHTML = CodigoHTML;
           }
-          Sentencia(21,25);
+          Sentencia(21, 25);
         </script>
         <script src="./Js/evaluacion.js"></script>
-        <input class='btn btn-info btn-lg btn-block' name="btnEnviar" type='button' id="btnEnviar" value="Grabar y enviar la evaluacion" placeholder="Grabar y enviar la evaluacion" onclick="todo()"></input>
+        <input class='btn btn-info btn-lg btn-block' name="btnEnviar" type='button' id="btnEnviar"
+          value="Enviar evaluacion" placeholder="Enviar evaluacion" onclick="todo()"></input>
         <!-- <input class='btn btn-info btn-lg btn-block' name="btnTest" type='button' id="btnTest" value="Test" placeholder="Test" onclick="displayRadioValue(), getDatos()"></input> -->
       </div>
     </div>
